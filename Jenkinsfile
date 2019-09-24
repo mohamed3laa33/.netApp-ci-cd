@@ -5,9 +5,20 @@ pipeline{
 			steps{
 				script{
 					if (isUnix()) {
-	    				sh 'ls -la'
+	    				sh 'dotnet build'
 					} else {
-	    				bat 'dir'
+	    				bat 'dotnet test'
+					}
+				}
+			}
+		}
+		stage ('Run UnitTest'){
+			steps{
+				script{
+					if (isUnix()) {
+	    				sh 'dotnet test'
+					} else {
+	    				bat 'dotnet test'
 					}
 				}
 			}
