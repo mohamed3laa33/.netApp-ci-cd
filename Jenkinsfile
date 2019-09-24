@@ -5,7 +5,7 @@ pipeline{
 			steps{
 				script{
 					if (isUnix()) {
-	    				sh 'ls -la'
+	    				sh 'dotnet build'
 					} else {
 	    				bat 'dir'
 					}
