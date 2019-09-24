@@ -3,10 +3,12 @@ pipeline{
 	stages{
 		stage ('Build App'){
 			steps{
-				if (isUnix()) {
-    				sh 'ls -la'
-				} else {
-    				bat 'dir'
+				script{
+					if (isUnix()) {
+	    				sh 'ls -la'
+					} else {
+	    				bat 'dir'
+					}
 				}
 			}
 		}
