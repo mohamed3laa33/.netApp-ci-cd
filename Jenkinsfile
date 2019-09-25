@@ -8,6 +8,7 @@ pipeline{
 						sh """
 							dotnet build HelloWorldSolution -r win-x64 -o windows/ > windowsbuildlogfile.txt
 							dotnet build HelloWorldSolution -r linux-x64 -o ubuntu/ > ubuntubuildlogfile.txt
+							ls
 						"""
 					} else {
 						bat """
