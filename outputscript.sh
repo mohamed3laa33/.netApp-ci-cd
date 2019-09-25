@@ -1,3 +1,3 @@
 #! /bin/sh 
-gzip -c HelloWorldSolution/windows windowsbuildlogfile.txt windowsoutput$BUILD_NUMBER.zip
-gzip -c HelloWorldSolution/ubuntu  ubuntubuildlogfile.txt ubuntuoutput$BUILD_NUMBER.zip
+tar -zcvf  windowsoutput$BUILD_NUMBER.zip HelloWorldSolution/windows windowsbuildlogfile.txt
+tar -zcvf ubuntuoutput$BUILD_NUMBER.zip  HelloWorldSolution/ubuntu ubuntubuildlogfile.txt 
