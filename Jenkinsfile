@@ -5,9 +5,15 @@ pipeline{
 			steps{
 				script{
 					if (isUnix()) {
-	    				sh 'dotnet build'
+						sh """
+							dotnet build HelloWorldSolution -r win-x64 -o windows/ > windowsbuildlogfile.txt
+							dotnet build HelloWorldSolution -r linux-x64 -o ubuntu/ > ubuntubuildlogfile.txt
+						"""
 					} else {
-	    				bat 'dotnet test'
+						bat """
+							dotnet build HelloWorldSolution -r win-x64 -o windows/ > windowsbuildlogfile.txt
+							dotnet build HelloWorldSolution -r linux-x64 -o ubuntu/	> ubuntubuildlogfile.txt				
+						"""
 					}
 				}
 			}
@@ -16,9 +22,34 @@ pipeline{
 			steps{
 				script{
 					if (isUnix()) {
-	    				sh 'dotnet test'
+						sh 'dotnet test HelloWorldTest'
 					} else {
-	    				bat 'dotnet test'
+						bat 'dotnet test HelloWorldTest'
+					}
+				}
+			}
+		}
+		stage ('Run linting Checks'){
+			steps{
+				script{
+					if (isUnix()) {
+						echo "linting test"
+					} else {
+						echo "linting test"
+					}
+				}
+			}
+		}
+		stage ('Run Integration test on master Branch'){
+			steps{
+				script{
+					if (env.BRANCH_NAME.equals('master') ){
+						echo 'Integration test'
+						if (isUnix()) {
+							sh 'dotnet test HelloWorldSolutions.Tests'
+						} else {
+							bat 'dotnet test HelloWorldSolutions.Tests'
+						}
 					}
 				}
 			}
