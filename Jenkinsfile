@@ -54,5 +54,20 @@ pipeline{
 				}
 			}
 		}
+		stage ('Store the build output along with a build log'){
+			steps{
+				script{
+						if (isUnix()) {
+							sh '''
+							chmod u+x outputscript.sh
+							./outputscript.sh
+							'''
+						} else {
+							bat ''
+						}
+					}
+				}
+			}
+		}
 	}
 }
