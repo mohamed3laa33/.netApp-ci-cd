@@ -1,3 +1,3 @@
 #! /bin/sh 
-tar -zcvf  windowsoutput_$BUILD_NUMBER.tar.gz HelloWorldSolution/windows windowsbuildlogfile.txt
-tar -zcvf ubuntuoutput_$BUILD_NUMBER.tar.gz  HelloWorldSolution/ubuntu ubuntubuildlogfile.txt 
+zip -zcvf  windowsoutput_$BUILD_NUMBER.zip HelloWorldSolution/windows windowsbuildlogfile.txt
+zip ubuntuoutput_$BUILD_NUMBER.zip  HelloWorldSolution/ubuntu ubuntubuildlogfile.txt 
